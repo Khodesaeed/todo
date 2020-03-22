@@ -25,12 +25,11 @@ document.querySelector('#addTodoForm').addEventListener('submit', e => {
     e.target.elements.addTodo.value = '' 
 })
 
-document.querySelector('#hide-complete').addEventListener('change', e => {
-
+document.querySelector('#hideComplete').addEventListener('change', e => {
     setFilters({
         hideCompleted: e.target.checked
     })
-
+    debugger
     renderTodo()
 })
 
@@ -38,3 +37,4 @@ window.addEventListener('storage', (e) => {
     loadTodos()
     renderTodo()
 })
+// renderTodo()

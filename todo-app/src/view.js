@@ -4,6 +4,7 @@ import { getTodos, toggleTodo, removeTodo } from './todos'
 // create DOM element fo individual note
 let generateToDOM = function (item) {
     const rootDiv = document.createElement('label')
+
     // setup checkbox input
     const checkBox = document.createElement('input')
     checkBox.setAttribute('type', 'checkbox')
@@ -12,7 +13,6 @@ let generateToDOM = function (item) {
         toggleTodo(item)
         renderTodo()
     })
-
 
     // setup text section
     const text = document.createElement('span')
@@ -43,7 +43,7 @@ let generateToDOM = function (item) {
 
 //get the DOM elements for list summery
 let generateSummeryDOM = function (todos) {
-    const incompleteTodo = todos.filter(todo => !todo.complete)
+    const incompleteTodo = todos.filter(todo => !todo.completed)
     const summery = document.createElement('h3')
     const plural = incompleteTodo.length === 1 ? '' : 's'
     summery.classList.add('list-title')
@@ -53,6 +53,7 @@ let generateSummeryDOM = function (todos) {
 }
 // render the data 
 const renderTodo = function () {
+
     const filters = getFilters()
     const todos = getTodos()
     const filteredTodo = todos.filter(todo => todo.text.toLowerCase().includes(filters.searchText.toLowerCase()))
@@ -71,8 +72,10 @@ const renderTodo = function () {
 
         }
     } else {
+        // debugger
         filteredTodo.forEach(item => {
-            if (!item.complete) {
+            debugger
+            if (!item.completed) {
                 generateToDOM(item)
             }
         })
